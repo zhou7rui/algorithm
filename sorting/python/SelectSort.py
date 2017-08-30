@@ -5,8 +5,8 @@
 def selectSort(arr):
     n = len(arr)
     for i in range(0,n,1):
+        # 寻找[i, n)区间里的最小值的索引
         minIndex = i;
-        #找到最小的一个值
         for j in range(i+1,n,1):
             if arr[j] < arr[minIndex]:
                 minIndex = j
