@@ -5,7 +5,6 @@ package xyz.zrui.algorithm.sorting;
  */
 public class SelectSort {
 
-    // 我们的算法类不允许产生任何实例
     public static void sort(Comparable[] arr) {
 
         int n = arr.length;
