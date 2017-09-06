@@ -26,6 +26,27 @@ public class InsertingSort implements Sorting {
 
     }
 
+    public void sort1(Comparable[] arr) {
+
+        for (int i = 1; i < arr.length; i++) {
+
+            //插入值
+            Comparable temp = arr[i];
+
+            int j;
+            // 向前遍历 插入值是否比前一位小
+            for (j = i; j > 0 && (arr[j-1].compareTo(temp) > 0); j-- ) {
+                //向后覆盖一位
+                arr[j] = arr[j-1];
+            }
+            arr[j] = temp;
+
+        }
+
+    }
+
+
+
 
     /**
      * 交换数组间的位置
@@ -43,9 +64,9 @@ public class InsertingSort implements Sorting {
     public static void main(String[] args) {
 
         // 测试Integer
-        Integer[] a = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        Integer[] a = SortTestHelper.generateRandomArray(10,1,10);
         InsertingSort sort = new InsertingSort();
-        sort.sort(a);
+        sort.sort1(a);
         SortTestHelper.printArray(a);
     }
 
