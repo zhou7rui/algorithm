@@ -25,5 +25,7 @@ def test_sort(func):
         endTime = int(time.time()*1000)
         if is_sort(*args):
             print("%s runTime %d ms"%(func.__name__,endTime - startTime))
+        else:
+            print("sort failed")
 
     return wrapper
