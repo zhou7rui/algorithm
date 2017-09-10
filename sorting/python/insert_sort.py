@@ -5,8 +5,8 @@
 '''
 import sort_helper
 
-@sort_helper.testSort
-def insertingSort(arr):
+@sort_helper.test_sort
+def insert_sort(arr):
     n = len(arr)
     for i in range(1,n,1):
         temp = arr[i]
@@ -18,8 +18,8 @@ def insertingSort(arr):
 
         arr[j] = temp
 
-@sort_helper.testSort
-def insertingSort1(arr):
+@sort_helper.test_sort
+def insert_sort1(arr):
     for i in range(1,len(arr),1):
         #向前查找插入位置
         for j in range(i,0,-1):
@@ -33,7 +33,7 @@ def insertingSort1(arr):
 
 
 if __name__ == '__main__':
-    arr = sort_helper.generateRandomArray(10,1,9)
+    arr = sort_helper.generate_randoma_array(10,1,9)
     print(arr)
-    insertingSort(arr)
+    insert_sort1(arr)
     print(arr)

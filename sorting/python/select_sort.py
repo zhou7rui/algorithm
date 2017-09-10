@@ -4,8 +4,8 @@
 '''
 import sort_helper
 
-@sort_helper.testSort
-def selectSort(arr):
+@sort_helper.test_sort
+def select_sort(arr):
     n = len(arr)
     for i in range(0,n,1):
         # 寻找[i, n)区间里的最小值的索引
@@ -20,6 +20,6 @@ def selectSort(arr):
         arr[minIndex] = temp
 
 if __name__ == '__main__':
-    arr = sort_helper.generateRandomArray(10000,1,9999)
-    selectSort(arr)
+    arr = sort_helper.generate_randoma_array(10000,1,9999)
+    select_sort(arr)
     print(arr)

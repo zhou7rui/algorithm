@@ -2,7 +2,7 @@
 import random
 import time
 
-def generateRandomArray(n,rangeL,rangeR):
+def generate_randoma_array(n,rangeL,rangeR):
 
     if rangeL >= rangeR:
         return;
@@ -11,14 +11,14 @@ def generateRandomArray(n,rangeL,rangeR):
         arr[i] = random.randint(rangeL, rangeR)
     return arr
 
-def isSort(arr):
+def is_sort(arr):
     n = len(arr)
     for i in range(0,n,1):
         if arr[i] < arr[i+1]:
             return False
     return True
 
-def testSort(func):
+def test_sort(func):
     def wrapper(*args,**kw):
         startTime = int(time.time()*1000)
         func(*args,**kw)
