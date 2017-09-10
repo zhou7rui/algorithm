@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*
 
-import sortHelper
+import sort_helper
 
 '''
     冒泡排序
 '''
-@sortHelper.testSort
+@sort_helper.testSort
 def bubbleSort1(arr):
     n = len(arr)
     for i in range(0,n-1,1):
@@ -20,7 +20,7 @@ def bubbleSort1(arr):
  冒泡排序优化思路一:
     设置开关，当第二层循环不在进行交换时说明排序完成 提前结束循环
 '''
-@sortHelper.testSort
+@sort_helper.testSort
 def bubbleSort2(arr):
     n = len(arr)
     for i in range(0,n - 1,1):
@@ -40,7 +40,7 @@ def bubbleSort2(arr):
     在遍历后记录下最后发生交换的位置
     下一次只需要遍历循环索引位置以前的值
 '''
-@sortHelper.testSort
+@sort_helper.testSort
 def bubbleSort3(arr):
     n = len(arr)
     flag = n
@@ -57,7 +57,7 @@ def bubbleSort3(arr):
 
 
 if __name__ == '__main__':
-    a = sortHelper.generateRandomArray(10,1,9)
+    a = sort_helper.generateRandomArray(10,1,9)
     print (a)
     bubbleSort3(a)
     print(a)

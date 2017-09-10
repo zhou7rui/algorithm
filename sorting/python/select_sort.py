@@ -2,9 +2,9 @@
 '''
     选择排序
 '''
-import sortHelper
+import sort_helper
 
-@sortHelper.testSort
+@sort_helper.testSort
 def selectSort(arr):
     n = len(arr)
     for i in range(0,n,1):
@@ -20,6 +20,6 @@ def selectSort(arr):
         arr[minIndex] = temp
 
 if __name__ == '__main__':
-    arr = sortHelper.generateRandomArray(10000,1,9999)
+    arr = sort_helper.generateRandomArray(10000,1,9999)
     selectSort(arr)
     print(arr)

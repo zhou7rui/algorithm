@@ -3,9 +3,9 @@
 '''
     插入排序
 '''
-import sortHelper
+import sort_helper
 
-@sortHelper.testSort
+@sort_helper.testSort
 def insertingSort(arr):
     n = len(arr)
     for i in range(1,n,1):
@@ -18,7 +18,7 @@ def insertingSort(arr):
 
         arr[j] = temp
 
-@sortHelper.testSort
+@sort_helper.testSort
 def insertingSort1(arr):
     for i in range(1,len(arr),1):
         #向前查找插入位置
@@ -33,7 +33,7 @@ def insertingSort1(arr):
 
 
 if __name__ == '__main__':
-    arr = sortHelper.generateRandomArray(10,1,9)
+    arr = sort_helper.generateRandomArray(10,1,9)
     print(arr)
     insertingSort(arr)
     print(arr)
