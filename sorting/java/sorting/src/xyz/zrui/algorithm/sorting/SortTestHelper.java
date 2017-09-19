@@ -68,13 +68,13 @@ public class SortTestHelper {
 
             long startTime = System.currentTimeMillis();
             //执行排序方法
-            method.invoke(null, params);
+            method.invoke(sortClass.newInstance(), params);
             long endTime = System.currentTimeMillis();
 
             if (!isSorted(arr)) {
                 throw new RuntimeException("排序失败");
             }
-
+            printArray(arr);
             System.out.println(sortClass.getSimpleName() + ":" + (endTime - startTime) + "ms");
 
         } catch (Exception e) {

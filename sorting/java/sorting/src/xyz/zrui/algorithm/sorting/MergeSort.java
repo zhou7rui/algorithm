@@ -3,7 +3,7 @@ package xyz.zrui.algorithm.sorting;
 import java.util.Arrays;
 
 /**
- * 并归排序
+ * 并归排序 递归的形式
  */
 public class MergeSort implements Sorting{
 
