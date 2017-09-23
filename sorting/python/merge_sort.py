@@ -14,14 +14,12 @@ def __merage_sort(arr,l,r):
     __merage_sort(arr,mid+1,r)
     __merage(arr,l,mid,r)
 
-# 进行归并排序 
+# 进行归并排序
 def __merage(arr,l,mid,r):
-    aux = [None]*(r - l + 1)
-    for i in range(l,r+1,1):
-        aux[i-l] = arr[i]
+    aux = arr[l:r+1]
     i = l
     j = mid + 1
-    for k in range(l,r+1,1):
+    for k in range(l,r+1):
         if i > mid:
             arr[k] = aux[j - l]
             j +=1
@@ -40,5 +38,5 @@ def merage_sort(arr):
     __merage_sort(arr,0,len(arr)-1)
 
 if __name__ == '__main__':
-    a = sort_helper.generate_randoma_array(60000,1,9999)
+    a = sort_helper.generate_randoma_array(10,1,9)
     merage_sort(a)
