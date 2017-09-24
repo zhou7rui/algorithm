@@ -34,9 +34,9 @@ def __merage(arr,l,mid,r):
             j +=1
 
 @sort_helper.test_sort
-def merage_sort(arr):
+def sort(arr):
     __merage_sort(arr,0,len(arr)-1)
 
 if __name__ == '__main__':
-    a = sort_helper.generate_randoma_array(10,1,9)
-    merage_sort(a)
+    a = sort_helper.generate_randoma_array(1000000,1,99999)
+    sort(a)
