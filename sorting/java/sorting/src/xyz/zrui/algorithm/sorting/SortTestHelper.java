@@ -74,7 +74,7 @@ public class SortTestHelper {
             if (!isSorted(arr)) {
                 throw new RuntimeException("排序失败");
             }
-            printArray(arr);
+//            printArray(arr);
             System.out.println(sortClass.getSimpleName() + ":" + (endTime - startTime) + "ms");
 
         } catch (Exception e) {
