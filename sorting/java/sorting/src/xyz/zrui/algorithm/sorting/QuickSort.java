@@ -1,6 +1,8 @@
 package xyz.zrui.algorithm.sorting;
 
 
+import java.util.Random;
+
 /**
  *  快速排序
  *  递归实现
@@ -32,6 +34,12 @@ public class QuickSort implements Sorting {
      * @return  返回分割的位置
      */
     private int partition(Comparable[] arr,int l,int r){
+
+
+        Random random = new Random();
+        int k = random.nextInt(r-l + 1) + l;
+
+        swap(arr,l,k);
 
         Comparable v = arr[l];
         int j = l;
@@ -79,7 +87,7 @@ public class QuickSort implements Sorting {
 
     public static void main(String[] args) {
 
-        Comparable[] arr = SortTestHelper.generateRandomArray(100000,1,99999);
+        Comparable[] arr = SortTestHelper.generateRandomArray(10000000,1,99999);
 
 
        SortTestHelper.testSort(QuickSort.class,arr);
