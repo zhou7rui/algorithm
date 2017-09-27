@@ -4,10 +4,14 @@
     快速排序
     通过递归的形式实现
 '''
-
+import random
 import sort_helper
 
 def __partition(arr,l,r):
+    # 随机取值
+    k = random.randint(l, r)
+    arr[l], arr[k] = arr[k], arr[l]
+
     v = arr[l]
     j = l
     for i in range(l + 1,r + 1):
