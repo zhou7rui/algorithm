@@ -7,6 +7,10 @@ public class PrintableMaxHeap extends MaxHeap<Comparable<Integer>> {
         super(capacity);
     }
 
+    public PrintableMaxHeap(Comparable<Integer>[] t, int n) {
+        super(t, n);
+    }
+
     // 以树状打印整个堆结构
     public void treePrint() {
 
@@ -98,12 +102,28 @@ public class PrintableMaxHeap extends MaxHeap<Comparable<Integer>> {
     // 测试 PrintableMaxHeap
     public static void main(String[] args) {
 
-        PrintableMaxHeap maxHeap = new PrintableMaxHeap(100);
         int N = 31; // 堆中元素个数
         int M = 100; // 堆中元素取值范围[0, M)
+        PrintableMaxHeap maxHeap = new PrintableMaxHeap(100);
+
         for (int i = 0; i < N; i++)
             maxHeap.insert(new Integer((int) (Math.random() * M)));
         maxHeap.treePrint();
+
+
+        System.out.println("********************heapify*************************");
+        Integer[] arr = new Integer[N];
+        for (int i = 0; i < N; i ++){
+            arr[i] = new Integer((int) (Math.random() * M));
+        }
+        PrintableMaxHeap heapify = new PrintableMaxHeap(arr,N);
+        heapify.treePrint();
+
+
+
+
+
+
 
     }
 }
