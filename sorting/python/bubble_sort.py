@@ -11,10 +11,7 @@ def bubbleSort1(arr):
     for i in range(0,n-1,1):
         for j in range(0,n-i-1,1):
             if arr[j] > arr[j+1]:
-                temp = arr[j]
-                arr[j] = arr[j+1]
-                arr[j+1] = temp
-
+                arr[j],arr[j + 1] = arr[j + 1], arr[j]
 
 '''
  冒泡排序优化思路一:
@@ -27,9 +24,7 @@ def bubble_sort2(arr):
         b = True
         for j in range(0,n - i - 1,1):
             if arr[j] > arr[j+1]:
-                temp = arr[j]
-                arr[j] = arr[j+1]
-                arr[j+1] = temp
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
                 b = False
         if b:
             break
@@ -49,9 +44,7 @@ def bubble_sort3(arr):
         flag = 0
         for j in range(1,k,1):
             if arr[j] < arr[j-1]:
-                temp = arr[j]
-                arr[j] = arr[j-1]
-                arr[j-1] = temp
+                arr[j], arr[j - 1] = arr[j - 1], arr[j]
                 flag = j
 
 
