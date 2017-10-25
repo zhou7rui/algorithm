@@ -32,11 +32,12 @@ public class HeapSort implements Sorting {
     @Override
     public void sort(Comparable[] arr) {
         int n = arr.length;
-
+        // 构建堆
         for (int i = ( n + 1) / 2; i >=0 ; i --) {
             shiftDown(arr,n,i);
         }
 
+        //将根节点与尾节点交换后尾节点前的重新生成堆。
         for (int i = n - 1 ; i > 0; i --){
             swap(arr,i,0);
             shiftDown(arr,i,0);
