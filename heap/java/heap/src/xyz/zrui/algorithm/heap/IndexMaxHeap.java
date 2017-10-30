@@ -1,6 +1,9 @@
 package xyz.zrui.algorithm.heap;
 
-public class IndexMxaHeap<T extends Comparable> {
+
+import java.util.Arrays;
+
+public class IndexMaxHeap<T extends Comparable> {
 
     protected T[] data;
 
@@ -11,7 +14,7 @@ public class IndexMxaHeap<T extends Comparable> {
     protected int capacity;
 
 
-    public IndexMxaHeap(int capacity){
+    public IndexMaxHeap(int capacity){
 
         this.indexes = new Integer[capacity + 1];
 
@@ -99,7 +102,7 @@ public class IndexMxaHeap<T extends Comparable> {
 
         i += 1;
         data[i] = t;
-        indexes[count + 1] = 1;
+        indexes[count + 1] = i;
 
         count ++;
         shiftUp(count);
@@ -120,8 +123,23 @@ public class IndexMxaHeap<T extends Comparable> {
         }
 
     }
+    public static void main(String[] args) {
 
+        IndexMaxHeap<Integer> heap = new IndexMaxHeap<>(10);
+        Integer[] arr = {15,17,19,13,22,16,28,30,41,62};
 
+        for (int i = 0; i < arr.length; i ++) {
+            heap.insert(i,arr[i]);
+        }
 
+        for (int i = 0; i <= arr.length; i++) {
+            System.out.print(heap.indexes[i] + " ");
+        }
+        System.out.println("");
+        Arrays.asList(heap.data).forEach(d -> {
+            System.out.print(d + " ");
+        });
+
+    }
 
 }
