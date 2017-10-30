@@ -67,6 +67,7 @@ class Maxheap(object):
         self.data[1], self.data[self.count] = self.data[self.count], self.data[1]
         self.count -= 1
         self.__shifDown(1)
+        self.data.pop()
         return ret
 
 
