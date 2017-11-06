@@ -82,13 +82,13 @@ public class BST<Key extends Comparable<Key>, Value> {
             return new Node(key, value);
         }
 
-        if (node.getKey().compareTo(key) < 0) {
+        if (node.getKey().compareTo(key) > 0) {
 
-            node.left = insert(node.getLeft(), key, value);
+            node.setLeft(insert(node.getLeft(), key, value));
 
-        } else if (node.getKey().compareTo(key) > 0) {
+        } else if (node.getKey().compareTo(key) < 0) {
 
-            node.left = insert(node.getLeft(), key, value);
+            node.setRight(insert(node.getRight(), key, value));
 
         } else {
             node.setValue(value);
@@ -118,7 +118,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         root = insert(root, key, value);
     }
 
-    // 搜索以 node 为根二叉树 是否包含键值为 key的节点
+    // 搜索以 node 为根二叉树 返回包含键值为 key的节点的value
     public Value search(Node node, Key key) {
         if (node == null) {
             return null;
@@ -133,6 +133,39 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
 
     }
+
+
+
+    public void preOrder(Node node){
+
+        if(node != null){
+            System.out.println(node.getKey());
+            preOrder(node.getLeft());
+            preOrder(node.getRight());
+        }
+
+    }
+
+    public void inOrder(Node node){
+
+        if(node != null){
+            inOrder(node.getLeft());
+            System.out.println(node.getKey());
+            inOrder(node.getRight());
+        }
+
+    }
+
+    public void postOrder(Node node){
+
+        if(node != null){
+            postOrder(node.getLeft());
+            postOrder(node.getRight());
+            System.out.println(node.getKey());
+        }
+
+    }
+
 
 
     public Node getRoot() {
@@ -152,6 +185,25 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 
-    
+    public static void main(String[] args) {
+
+        BST<Integer,String> bst = new BST<>();
+
+        bst.insert(34,"AA");
+        bst.insert(323,"BB");
+        bst.insert(32,"CC");
+        bst.insert(33,"DD");
+        bst.insert(24,"EE");
+        bst.insert(14,"FF");
+        bst.insert(84,"GG");
+
+        bst.inOrder(bst.root);
+
+
+
+
+    }
+
+
 
 }
