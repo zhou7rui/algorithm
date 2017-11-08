@@ -1,8 +1,12 @@
 package xyz.zrui.algorithm.search;
 
 
+import java.util.ArrayDeque;
+import java.util.Queue;
+
 /**
- *  二叉搜索树
+ * 二叉搜索树
+ *
  * @param <Key>
  * @param <Value>
  */
@@ -135,10 +139,10 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 
+    //首序遍历
+    public void preOrder(Node node) {
 
-    public void preOrder(Node node){
-
-        if(node != null){
+        if (node != null) {
             System.out.println(node.getKey());
             preOrder(node.getLeft());
             preOrder(node.getRight());
@@ -146,9 +150,10 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     }
 
-    public void inOrder(Node node){
+    //中序遍历
+    public void inOrder(Node node) {
 
-        if(node != null){
+        if (node != null) {
             inOrder(node.getLeft());
             System.out.println(node.getKey());
             inOrder(node.getRight());
@@ -156,14 +161,143 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     }
 
-    public void postOrder(Node node){
+    // 尾序遍历
+    public void postOrder(Node node) {
 
-        if(node != null){
+        if (node != null) {
             postOrder(node.getLeft());
             postOrder(node.getRight());
             System.out.println(node.getKey());
         }
 
+    }
+
+    //层序遍历
+    public void levelOrder(Node node) {
+
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+
+            Node temp = queue.poll();
+
+            System.out.println(temp.key);
+
+            if (temp.getLeft() != null) {
+                queue.add(temp.getLeft());
+            }
+            if (temp.getRight() != null) {
+                queue.add(temp.getRight());
+            }
+
+        }
+
+
+    }
+
+    private Node minimum(Node node) {
+
+        if (node.getLeft() == null) {
+            return node;
+        }
+
+        return minimum(node.getLeft());
+
+    }
+
+    // 返回最小值的key
+    public Key minimum() {
+        assert count > 0;
+        return minimum(root).getKey();
+    }
+
+    /*public Key minimum(){
+         Node node = root;
+        Node temp = null;
+        while (node != null){
+            temp = node;
+            node = node.getLeft();
+        }
+        return temp.key;
+    }*/
+
+
+    private Node maximum(Node node) {
+
+        if (node.getRight() == null) {
+            return node;
+        }
+
+        return maximum(node.getRight());
+
+
+    }
+
+    // 返回最大值的key
+    public Key maximum() {
+        assert count > 0;
+        return maximum(root).getKey();
+    }
+
+    // 返回最大值的key
+    /*public Key maximum() {
+        Node node = root;
+        Node temp = null;
+        while (node != null){
+            temp = node;
+            node = node.right;
+        }
+        return temp.key;
+    }*/
+
+    /**
+     * @param node 删除掉以node为根的二分搜索树中的最大节点
+     * @return 返回删除节点后新的二分搜索树的根
+     */
+    private Node removeMax(Node node) {
+
+        if (node.getRight() == null) {
+
+            Node leftNode = node.getLeft();
+            count--;
+            return leftNode;
+        }
+        node.setRight(removeMax(node.getRight()));
+        return node;
+    }
+
+
+
+    //删掉二分搜索树中的最大节点
+    public  void removeMax(){
+        if(root != null){
+          root = removeMax(root);
+        }
+    }
+
+    /**
+     * @param node 删除掉以node为根的二分搜索树中的最小节点
+     * @return 返回删除节点后新的二分搜索树的根
+     */
+    private Node removeMin(Node node) {
+
+        if (node.getRight() == null) {
+
+            Node rightNode = node.getRight();
+            count--;
+            return rightNode;
+        }
+        node.setLeft(removeMin(node.getLeft()));
+        return node;
+    }
+
+
+    //删掉二分搜索树中的最小节点
+    public  void removeMin(){
+        if(root != null){
+            root = removeMin(root);
+        }
     }
 
 
@@ -187,23 +321,24 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     public static void main(String[] args) {
 
-        BST<Integer,String> bst = new BST<>();
+        BST<Integer, String> bst = new BST<>();
 
-        bst.insert(34,"AA");
-        bst.insert(323,"BB");
-        bst.insert(32,"CC");
-        bst.insert(33,"DD");
-        bst.insert(24,"EE");
-        bst.insert(14,"FF");
-        bst.insert(84,"GG");
-
+        bst.insert(34, "AA");
+        bst.insert(323, "BB");
+        bst.insert(32, "CC");
+        bst.insert(33, "DD");
+        bst.insert(24, "EE");
+        bst.insert(14, "FF");
+        bst.insert(84, "GG");
+        bst.inOrder(bst.root);
+        System.out.println("max" + bst.maximum());
+        System.out.println("min" + bst.minimum());
+        System.out.println("****************");
+        bst.removeMax();
         bst.inOrder(bst.root);
 
 
-
-
     }
-
 
 
 }
