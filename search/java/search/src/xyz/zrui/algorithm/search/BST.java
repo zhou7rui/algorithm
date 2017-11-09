@@ -268,11 +268,10 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 
-
     //删掉二分搜索树中的最大节点
-    public  void removeMax(){
-        if(root != null){
-          root = removeMax(root);
+    public void removeMax() {
+        if (root != null) {
+            root = removeMax(root);
         }
     }
 
@@ -282,7 +281,7 @@ public class BST<Key extends Comparable<Key>, Value> {
      */
     private Node removeMin(Node node) {
 
-        if (node.getRight() == null) {
+        if (node.getLeft() == null) {
 
             Node rightNode = node.getRight();
             count--;
@@ -294,12 +293,66 @@ public class BST<Key extends Comparable<Key>, Value> {
 
 
     //删掉二分搜索树中的最小节点
-    public  void removeMin(){
-        if(root != null){
+    public void removeMin() {
+        if (root != null) {
             root = removeMin(root);
         }
     }
 
+
+    //删除以node 为根节点中 key 的元素
+    private Node remove(Node node, Key key) {
+
+        if (node == null) {
+            return null;
+        }
+        if (key.compareTo(node.getKey()) < 0) {
+
+            node.setLeft(remove(node.getLeft(), key));
+            return node;
+
+        } else if (key.compareTo(node.getKey()) > 0) {
+
+            node.setRight(remove(node.getRight(), key));
+            return node;
+        } else {
+            // 待删除节点左子树为空的情况
+            if (node.getLeft() == null) {
+                Node rightNode = node.getRight();
+                count--;
+                return rightNode;
+            }
+            // 待删除节点右子树为空的情况
+            if (node.getRight() == null) {
+                Node leftNode = node.getLeft();
+                count--;
+                return leftNode;
+            }
+
+            // 待删除节点左右子树均不为空的情况
+
+            // 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
+            // 用这个节点顶替待删除节点的位置
+            Node successOr = minimum(node);
+            count++;
+            successOr.setRight(removeMin(node.getRight()));
+            successOr.setLeft(node.getLeft());
+            count--;
+
+            return successOr;
+
+
+        }
+
+    }
+
+
+    //删掉二分搜索树中key节点
+    public void remove(Key key) {
+        if (root != null) {
+            root = remove(root, key);
+        }
+    }
 
 
     public Node getRoot() {
@@ -331,10 +384,10 @@ public class BST<Key extends Comparable<Key>, Value> {
         bst.insert(14, "FF");
         bst.insert(84, "GG");
         bst.inOrder(bst.root);
-        System.out.println("max" + bst.maximum());
-        System.out.println("min" + bst.minimum());
+//        System.out.println("max" + bst.maximum());
+//        System.out.println("min" + bst.minimum());
         System.out.println("****************");
-        bst.removeMax();
+        bst.remove(84);
         bst.inOrder(bst.root);
 
 
