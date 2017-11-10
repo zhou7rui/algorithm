@@ -164,6 +164,47 @@ class BST(object):
             self.root = self.__removeMin(self.root)
 
 
+    #删除以node为根 key的节点
+    def __remove(self,node,key):
+
+        if node == None:
+            return None
+
+        if node.key > key:
+            node.left = self.__remove(node.left,key)
+            return node
+        elif node.key < key:
+            node.right = self.__remove(node.right,key)
+            return node
+        else:
+            #当左子节点为空时
+            if node.left == None:
+                rightNode = node.right
+                self.count -= 1
+                return rightNode
+
+            #当右子节点为空时
+            if node.right == None:
+                leftNode = node.left
+                self.count -= 1
+                return leftNode
+            # 当左右子节点都不为空时  使用右最小子节点 代替当前删除节点
+            successor = self.__minimum(node.right)
+            self.count += 1
+            rightNode = self.__removeMin(node.right)
+            
+            successor.left = node.left
+            successor.right = rightNode
+            self.count -= 1
+            return successor
+
+
+
+    #删除key的节点
+    def remove(self,key):
+        self.root = self.__remove(self.root,key)
+
+
 
 
 if __name__ == '__main__':
@@ -175,9 +216,9 @@ if __name__ == '__main__':
     bst.insert(123,"EE")
     bst.insert(99,"FF")
     bst.insert(235,"GG")
-    bst.inOrder(bst.root)
-    print("max",bst.maximum())
-    print("min",bst.minimum())
+    bst.levelOrder(bst.root)
+    # print("max",bst.maximum())
+    # print("min",bst.minimum())
     print("************************")
-    bst.removeMax()
-    bst.inOrder(bst.root)
+    bst.remove(25)
+    bst.levelOrder(bst.root)
