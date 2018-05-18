@@ -24,7 +24,7 @@ def insert_sort1(arr):
         #向前查找插入位置
         for j in range(i,0,-1):
             if arr[j] < arr[j-1]:
-                #sawp 交换位置
+                #swap 交换位置
                 temp = arr[j-1]
                 arr[j-1] = arr[j]
                 arr[j] = temp
