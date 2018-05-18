@@ -24,7 +24,7 @@ def __partition(arr,l,r):
 
 def  __quick_sort(arr,l,r):
     if l > r:
-        return;
+        return
     p = __partition(arr,l,r)
     __quick_sort(arr,l, p - 1)
     __quick_sort(arr,p + 1, r)

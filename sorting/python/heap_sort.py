@@ -20,7 +20,7 @@ def heap_sort(arr):
 def __shifDown(arr,n,k):
 
     while (2 * k + 1 < n ):
-        j = 2 * k + 1;
+        j = 2 * k + 1
         if j + 1 < n and arr[j + 1] > arr[j] :
             j += 1
         if arr[k] >= arr[j]:

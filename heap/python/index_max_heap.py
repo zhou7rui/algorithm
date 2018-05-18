@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 
 '''
-                        最大堆实现
+                        最大索引堆实现
                            98
                 /                      \
                96                      84
@@ -60,7 +60,7 @@ class IndexMxaHeap(object):
             k = j
 
     def extractMax(self):
-        ret = self.data[indexes[1]]
+        ret = self.data[self.indexes[1]]
         self.indexes[1], self.indexes[self.count] = self.indexes[self.count], self.indexes[1]
         self.count -= 1
         self.__shifDown(1)
@@ -69,16 +69,16 @@ class IndexMxaHeap(object):
 
 
     def extractMaxIndex(self):
-        ret = indexes[1] - 1
+        ret = self.indexes[1] - 1
         self.indexes[1], self.indexes[self.count] = self.indexes[self.count], self.indexes[1]
         self.count -= 1
         self.__shifDown(1)
-        del self.data[indexes[-1]]
+        del self.data[self.indexes[-1]]
         self.indexes.pop()
         return ret
 
     def change(self,k,newData):
-        data[k + 1] = newData
+        self.data[k + 1] = newData
         # 找到indexes[j] == i, i 表示data[i]在堆中的元素的位置
         # 之后shiftUp(j),再shiftDown(j)
         for i in range(len(self.indexes)):
