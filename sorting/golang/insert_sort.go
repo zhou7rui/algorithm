@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"./help"
 )
 
 func insertSort(arr []int, n int) []int {
@@ -31,26 +33,13 @@ func insertSwapSort(arr []int, n int) []int {
 	return arr
 }
 
-func arrayPrint(arr []int) {
-	fmt.Print("arr: [")
-	isComma := false
-	for i := 0; i < len(arr); i++ {
-		if isComma {
-			fmt.Print(", ")
-		}
-		fmt.Print(arr[i])
-		isComma = true
-	}
-	fmt.Println("]")
-}
-
 func main() {
 	arr := []int{1, 7, 8, 3, 5, 2, 6, 9, 4, 0}
 	insertArr := insertSort(arr, len(arr))
 	fmt.Print("insertSort")
-	arrayPrint(insertArr)
+	help.ArrayPrint(insertArr)
 	insertSwapArr := insertSwapSort(arr, len(arr))
 	fmt.Print("insertSwapSort")
-	arrayPrint(insertSwapArr)
+	help.ArrayPrint(insertSwapArr)
 
 }

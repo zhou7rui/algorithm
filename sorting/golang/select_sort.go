@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+
+	"./help"
 )
 
 func selectSort(arr []int, n int) []int {
@@ -36,5 +38,5 @@ func arrayPrint(arr []int) {
 func main() {
 	arr := []int{1, 7, 8, 3, 5, 2, 6, 9, 4, 0}
 	arr = selectSort(arr, len(arr))
-	arrayPrint(arr)
+	help.ArrayPrint(arr)
 }
