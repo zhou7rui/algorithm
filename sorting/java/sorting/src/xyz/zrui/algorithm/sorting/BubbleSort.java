@@ -1,5 +1,7 @@
 package xyz.zrui.algorithm.sorting;
 
+import java.util.Arrays;
+
 /**
  * 冒泡排序
  */
@@ -95,11 +97,9 @@ public class BubbleSort implements Sorting {
     public static void main(String[] args) {
 
         // 测试Integer
-        Integer[] a = SortTestHelper.generateRandomArray(10, 1, 10);
-        SortTestHelper.printArray(a);
-        BubbleSort sort = new BubbleSort();
-        sort.sort2(a);
-        SortTestHelper.printArray(a);
+        Integer[] arr = SortTestHelper.generateRandomArray(10000, 1, 9999);
+        Integer[] newArr = arr.clone();
+        SortTestHelper.testSort(BubbleSort.class,arr);
     }
 
 }

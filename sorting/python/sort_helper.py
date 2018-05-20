@@ -5,7 +5,7 @@ import time
 def generate_randoma_array(n,rangeL,rangeR):
 
     if rangeL >= rangeR:
-        return;
+        return
     arr = [None] * n
     for i in range(0,n,1):
         arr[i] = random.randint(rangeL, rangeR)

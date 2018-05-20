@@ -50,7 +50,5 @@ def bubble_sort3(arr):
 
 
 if __name__ == '__main__':
-    a = sort_helper.generate_randoma_array(10,1,9)
-    print (a)
-    bubble_sort3(a)
-    print(a)
+    a = sort_helper.generate_randoma_array(10000,1,9999)
+    bubbleSort1(a)

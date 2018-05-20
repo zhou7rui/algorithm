@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"./help"
 )
 
@@ -34,12 +32,8 @@ func insertSwapSort(arr []int, n int) []int {
 }
 
 func main() {
-	arr := []int{1, 7, 8, 3, 5, 2, 6, 9, 4, 0}
-	insertArr := insertSort(arr, len(arr))
-	fmt.Print("insertSort")
-	help.ArrayPrint(insertArr)
-	insertSwapArr := insertSwapSort(arr, len(arr))
-	fmt.Print("insertSwapSort")
-	help.ArrayPrint(insertSwapArr)
+	arr := help.GenRanArray(10000, 1, 9999)
+	// help.ArrayPrint(arr)
+	help.TestSort(insertSwapSort)(arr, len(arr))
 
 }

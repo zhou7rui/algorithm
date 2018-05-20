@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"./help"
 )
 
@@ -22,21 +20,8 @@ func selectSort(arr []int, n int) []int {
 	return arr
 }
 
-func arrayPrint(arr []int) {
-	fmt.Print("arr: [")
-	isComma := false
-	for i := 0; i < len(arr); i++ {
-		if isComma {
-			fmt.Print(", ")
-		}
-		fmt.Print(arr[i])
-		isComma = true
-	}
-	fmt.Println("]")
-}
-
 func main() {
-	arr := []int{1, 7, 8, 3, 5, 2, 6, 9, 4, 0}
-	arr = selectSort(arr, len(arr))
-	help.ArrayPrint(arr)
+	arr := help.GenRanArray(10000, 1, 9999)
+	// help.ArrayPrint(arr)
+	help.TestSort(selectSort)(arr, len(arr))
 }
