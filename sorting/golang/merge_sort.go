@@ -6,13 +6,17 @@ import (
 
 func merge_sort(arr []int, l int, r int) {
 
-	if l >= r {
+	if  r - l <= 15 {
+		insertSort(arr, l, r)
 		return
 	}
 	mid := l + (r-l)/2
 	merge_sort(arr, l, mid)
 	merge_sort(arr, mid+1, r)
-	merge(arr, l, mid, r)
+	if(arr[mid] > arr [mid+1]){
+		merge(arr, l, mid, r)
+	}
+	
 }
 
 func merge(arr []int, l int, mid int, r int) {
@@ -39,15 +43,28 @@ func merge(arr []int, l int, mid int, r int) {
 
 }
 
+func insertSort(arr []int, l int, r int){
+
+	for i:= l + 1; i < r + 1; i ++ {
+
+		temp := arr[i]
+		var j int
+		for j = i; j > l && arr[j - 1] > temp; j -- {
+			arr[j] = arr [j - 1]
+		}
+		arr[j] = temp
+	}
+}
+
 func sort(arr []int, n int) []int {
 	merge_sort(arr, 0, n-1)
 	return arr
 }
 
 func main() {
-	arr := help.GenRanArray(1000000, 1, 999999)
-	//help.ArrayPrint(arr)
+	arr := help.GenRanArray(10, 1, 9)
+	help.ArrayPrint(arr)
 	help.TestSort(sort)(arr, len(arr))
-	//help.ArrayPrint(arr)
+	help.ArrayPrint(arr)
 
 }
