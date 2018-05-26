@@ -18,6 +18,7 @@ func quick2Sort(arr []int, l, r int) {
 
 }
 
+//寻找
 func partition2(arr []int, l, r int) int {
 	// 随机一个位置
 	ran := rand.Intn(r-l+1) + l
