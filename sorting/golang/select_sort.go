@@ -4,7 +4,7 @@ import (
 	"./help"
 )
 
-func selectSort(arr []int, n int) []int {
+func SelectSort(arr []int, n int) []int {
 	for i := 0; i < n; i++ {
 		minIndex := i
 		// 遍历出最小的索引位置
@@ -23,5 +23,5 @@ func selectSort(arr []int, n int) []int {
 func main() {
 	arr := help.GenRanArray(10000, 1, 9999)
 	// help.ArrayPrint(arr)
-	help.TestSort(selectSort)(arr, len(arr))
+	help.TestSort(SelectSort)(arr, len(arr))
 }

@@ -4,7 +4,7 @@ import (
 	"./help"
 )
 
-func insertSort(arr []int, n int) []int {
+func InsertSort(arr []int, n int) []int {
 	for i := 1; i < n; i++ {
 		temp := arr[i]
 		j := i
@@ -17,7 +17,7 @@ func insertSort(arr []int, n int) []int {
 	return arr
 }
 
-func insertSwapSort(arr []int, n int) []int {
+func InsertSwapSort(arr []int, n int) []int {
 	for i := 1; i < n; i++ {
 		for j := i; j > 0; j-- {
 			if arr[j] < arr[j-1] {
@@ -34,6 +34,6 @@ func insertSwapSort(arr []int, n int) []int {
 func main() {
 	arr := help.GenRanArray(10000, 1, 9999)
 	// help.ArrayPrint(arr)
-	help.TestSort(insertSwapSort)(arr, len(arr))
+	help.TestSort(InsertSort)(arr, len(arr))
 
 }

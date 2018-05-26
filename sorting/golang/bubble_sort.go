@@ -13,7 +13,6 @@ func bubbleSort(arr []int, n int) []int {
 	return arr
 }
 
-
 // 冒泡排序优化思路1
 // 设置开关，当第二层循环不在进行交换时说明排序完成 提前结束外层循环
 func bubbleSort1(arr []int, n int) []int {
@@ -40,15 +39,14 @@ func bubbleSort2(arr []int, n int) []int {
 	for flag > 0 {
 		n = flag
 		flag = 0
-		for i := 1; i < n; i ++ {
-			if arr[i] < arr[i - 1] {
-				arr[i], arr[i - 1 ] = arr[i - 1], arr[i]
+		for i := 1; i < n; i++ {
+			if arr[i] < arr[i-1] {
+				arr[i], arr[i-1] = arr[i-1], arr[i]
 				flag = i
 			}
 		}
 
 	}
-
 
 	return nil
 

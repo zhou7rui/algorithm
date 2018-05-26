@@ -25,7 +25,7 @@ class Maxheap(object):
         else:
             for i in range(0,cpacity):
                 self.data[i + 1]= arr[i]
-            self.count = cpacity;
+            self.count = cpacity
             for i in range(self.count / 2, 0, -1):
                 self.__shifDown(i)
 
