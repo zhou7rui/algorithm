@@ -2,7 +2,7 @@
 '''
     二分搜索树
 '''
-import Queue
+from queue import Queue
 class BST(object):
     """docstring for BTR."""
     def __init__(self):
@@ -95,7 +95,7 @@ class BST(object):
     #层序遍历
     def levelOrder(self,node):
 
-        q = Queue.Queue()
+        q = Queue()
         q.put(node)
         while not q.empty():
             temp = q.get()

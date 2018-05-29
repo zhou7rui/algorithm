@@ -22,4 +22,3 @@ def select_sort(arr):
 if __name__ == '__main__':
     arr = sort_helper.generate_randoma_array(10000,1,9999)
     select_sort(arr)
-    print(arr)

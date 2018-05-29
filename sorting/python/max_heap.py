@@ -37,9 +37,9 @@ class Maxheap(object):
 
     def __shiftUp(self,k):
 
-        while k > 1 and self.data[k] > self.data[k / 2]:
-            self.data[k],self.data[k / 2] = self.data[k / 2], self.data[k]
-            k /= 2
+        while k > 1 and self.data[k] > self.data[int(k / 2)]:
+            self.data[k],self.data[int(k / 2)] = self.data[int(k / 2)], self.data[k]
+            k =int(k/2) 
 
 
     def insert(self,data):

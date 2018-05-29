@@ -37,9 +37,9 @@ class Maxheap(object):
 
     def __shiftUp(self,k):
 
-        while k > 1 and self.data[k] > self.data[k / 2]:
-            self.data[k],self.data[k / 2] = self.data[k / 2], self.data[k]
-            k /= 2
+        while k > 1 and self.data[k] > self.data[int(k / 2)]:
+            self.data[k],self.data[int(k / 2)] = self.data[int(k / 2)], self.data[k]
+            k = int(k/2) 
 
 
     def insert(self,data):
@@ -87,6 +87,6 @@ if __name__ == '__main__':
     # arr = [random.randint(1,M) for i in range(N)]
     # heap = Maxheap(len(arr),arr)
 #[None, 95, 84, 85, 78, 80, 50, 74, 62, 70, 59, 51, 38, 47, 57, 71, 9, 16, 19, 53, 18, 25, 44, 7, 28, 2, 24, 16, 18, 13, 33, 70]
-    print(heap.size())
     print(heap.data)
     print(heap.extractMax())
+    print(heap.data)

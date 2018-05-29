@@ -60,6 +60,7 @@ func (maxHeap *MaxHeap) shiftUp(k int) {
 func (maxHeap *MaxHeap) ExtractMax() Comparable {
 	item := maxHeap.data[1]
 	maxHeap.data[1], maxHeap.data[maxHeap.count] = maxHeap.data[maxHeap.count], maxHeap.data[1]
+	maxHeap.data = maxHeap.data[0:maxHeap.count]
 	maxHeap.count--
 	maxHeap.shitDown(1)
 	return item

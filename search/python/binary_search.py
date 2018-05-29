@@ -6,7 +6,7 @@ def rank(key,arr):
 	lo = 0
 	hi = len(arr)
 	while lo <= hi:
-		mid = lo + (hi - lo) / 2    	 #搜索范围缩小一半 
+		mid = lo + int((hi - lo) / 2)    	 #搜索范围缩小一半 
 		if key < arr[mid]:
 			hi = mid - 1
 		elif key > arr[mid]:

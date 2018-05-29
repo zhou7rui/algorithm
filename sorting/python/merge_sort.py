@@ -5,11 +5,13 @@
     通过递归的形式实现
 '''
 import sort_helper
+import sys
+sys.setrecursionlimit(10000000)
 def __merage_sort(arr,l,r):
     if l >= r:
         return
 
-    mid = l + (r - l) / 2
+    mid = l + int((r - l) / 2)
     __merage_sort(arr,l,mid)
     __merage_sort(arr,mid+1,r)
     __merage(arr,l,mid,r)
@@ -38,5 +40,5 @@ def sort(arr):
     __merage_sort(arr,0,len(arr)-1)
 
 if __name__ == '__main__':
-    a = sort_helper.generate_randoma_array(1000000,1,99999)
+    a = sort_helper.generate_randoma_array(100000,1,99999)
     sort(a)

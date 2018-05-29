@@ -32,7 +32,7 @@ def __shifDown(arr,n,k):
 def sort(arr):
 
     n = len(arr)
-    for i in range((n + 1) / 2,-1,-1):
+    for i in range(int((n + 1) / 2),-1,-1):
         __shifDown(arr,n,i)
 
 
