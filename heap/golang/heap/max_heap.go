@@ -62,11 +62,10 @@ func (maxHeap *MaxHeap) ExtractMax() Comparable {
 	maxHeap.data[1], maxHeap.data[maxHeap.count] = maxHeap.data[maxHeap.count], maxHeap.data[1]
 	maxHeap.data = maxHeap.data[0:maxHeap.count]
 	maxHeap.count--
-	maxHeap.shitDown(1)
+	maxHeap.shiftDown(1)
 	return item
 }
-func (maxHeap *MaxHeap) shitDown(k int) {
-	fmt.Println(k)
+func (maxHeap *MaxHeap) shiftDown(k int) {
 	for 2*k <= maxHeap.count {
 		j := k * 2
 

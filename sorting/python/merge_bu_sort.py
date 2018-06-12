@@ -9,7 +9,6 @@ def merge(arr,l,mid,r):
     aux = arr[l:r+1]
     i = l
     j = mid + 1
-    print(i,j)
     for k in range(l,r+1,1):
         if i > mid:
             arr[k] = aux[j - l]
