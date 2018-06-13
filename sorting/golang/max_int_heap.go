@@ -90,12 +90,6 @@ func HeapSort(arr []int, n int) []int {
 }
 
 func main() {
-
-	arr := help.GenRanArray(15, 1, 9)
-	fmt.Println(arr)
+	arr := help.GenRanArray(10000000, 1, 999999)
 	help.TestSort(HeapSort)(arr, len(arr))
-	fmt.Println(arr)
-	// arr := make([]int, 6)
-	// fmt.Println(arr)
-
 }
