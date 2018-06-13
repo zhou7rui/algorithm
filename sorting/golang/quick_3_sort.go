@@ -51,8 +51,9 @@ func quick3Sort(arr []int, l, r int) {
 }
 
 func quick3InsertSort(arr []int, l, r int) {
+
 	for i := l + 1; i <= r; i++ {
-		temp := i
+		temp := arr[i]
 		j := i
 		for j > l && temp < arr[j-1] {
 			arr[j] = arr[j-1]
@@ -70,8 +71,8 @@ func Quick3Sort(arr []int, n int) []int {
 
 func main() {
 
-	arr := help.GenRanArray(10, 1, 9)
-	help.ArrayPrint(arr)
+	arr := help.GenRanArray(10000, 1, 9999)
+	// help.ArrayPrint(arr)
 	help.TestSort(Quick3Sort)(arr, len(arr))
-	help.ArrayPrint(arr)
+	// help.ArrayPrint(arr)
 }
