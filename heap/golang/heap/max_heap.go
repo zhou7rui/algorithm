@@ -1,4 +1,4 @@
-package main
+package heap
 
 /*
 *
@@ -7,20 +7,17 @@ package main
  */
 import (
 	"fmt"
-	"math/rand"
-	"reflect"
 )
-
-// Comparable 接口
-type Comparable interface {
-	CompareTo(t Comparable) int
-}
 
 // 定义结构体
 type MaxHeap struct {
 	data     []Comparable
 	count    int
 	capacity int
+}
+
+func (maxHeap *MaxHeap) GetData() []Comparable {
+	return maxHeap.data
 }
 
 func (maxHeap *MaxHeap) Init(capacity int) {
@@ -79,38 +76,4 @@ func (maxHeap *MaxHeap) shiftDown(k int) {
 		k = j
 
 	}
-}
-
-// 包装类
-type Integer int
-
-// 实现Comparable  接口判断大小
-func (integer Integer) CompareTo(t Comparable) int {
-	var anotherInteger Integer
-	// 通过使用反射获取值并进行转型
-	anotherInteger = reflect.ValueOf(t).Interface().(Integer)
-	return compare(integer, anotherInteger)
-}
-
-// 比较
-func compare(x, y Integer) int {
-	if x < y {
-		return -1
-	} else if x > y {
-		return 1
-	} else {
-		return 0
-	}
-
-}
-
-func main() {
-	integerMaxHeap := MaxHeap{}
-	integerMaxHeap.Init(15)
-	for i := 0; i < 15; i++ {
-		integerMaxHeap.Insert(Integer(rand.Intn(20)))
-	}
-	fmt.Println(integerMaxHeap.data)
-	fmt.Println(integerMaxHeap.ExtractMax())
-	fmt.Println(integerMaxHeap.data)
 }
