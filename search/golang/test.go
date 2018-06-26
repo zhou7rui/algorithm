@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"./search"
 )
 
@@ -20,5 +22,11 @@ func main() {
 
 	bst.Insert(77, "DD")
 
-	bst.InOrder()
+	bst.Insert(99, "EE")
+
+	bst.Insert(66, "FF")
+
+	bst.Insert(64, "GG")
+
+	fmt.Println(bst.Max())
 }

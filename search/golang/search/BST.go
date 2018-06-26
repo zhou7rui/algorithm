@@ -110,6 +110,7 @@ func (b *BST) contain(node *Node, key Key) bool {
 	}
 }
 
+//深度优先遍历
 // 前序遍历
 func (b *BST) PreOrder() {
 	preOrder(b.root)
@@ -123,6 +124,55 @@ func (b *BST) InOrder() {
 //后序遍历
 func (b *BST) PostOrder() {
 	postOrder(b.root)
+}
+
+// (广度)层序优先遍历  利用队列
+func (b *BST) LevelOrder() {
+
+	queue := NewQueue()
+	queue.Push(b.root)
+
+	for !queue.IsEmpty() {
+
+		node := queue.Poll()
+		fmt.Println(node.key)
+
+		if node.left != nil {
+			queue.Push(node.left)
+		}
+		if node.right != nil {
+			queue.Push(node.right)
+		}
+
+	}
+
+}
+
+func (b *BST) Minimun() Key {
+
+	return minimun(b.root).key
+}
+
+func (b *BST) Max() Key {
+	return max(b.root).key
+}
+
+func (b *BST) RemoveMin() {
+	if b.root != nil {
+		b.removeMin(b.root)
+	}
+}
+
+func (b *BST) RemoveMax() {
+	if b.root != nil {
+		b.removeMax(b.root)
+	}
+}
+
+func (b *BST) Remove(key Key) {
+	if b.root != nil {
+		b.root = b.remove(b.root, key)
+	}
 }
 
 func preOrder(node *Node) {
@@ -148,4 +198,75 @@ func postOrder(node *Node) {
 		postOrder(node.right)
 		fmt.Println(node.key)
 	}
+}
+
+func minimun(node *Node) *Node {
+
+	if node.left != nil {
+		return minimun(node.left)
+	}
+	return node
+}
+
+func max(node *Node) *Node {
+
+	if node.right != nil {
+		return max(node.right)
+	}
+
+	return node
+}
+
+func (b *BST) removeMin(node *Node) *Node {
+
+	if node.left == nil {
+		b.count--
+		return node.right
+	}
+	node.left = b.removeMin(node.left)
+	return node
+}
+
+func (b *BST) removeMax(node *Node) *Node {
+
+	if node.right == nil {
+		b.count--
+		return node.left
+	}
+	node.right = b.removeMax(node.right)
+	return node
+}
+
+func (b *BST) remove(node *Node, key Key) *Node {
+
+	if node == nil {
+		return &Node{}
+	}
+	if node.key < key {
+		return b.remove(node.right, key)
+	} else if node.key > key {
+		return b.remove(node.left, key)
+	} else { //node.key == key
+
+		if node.left == nil {
+			b.count--
+			return node.right
+		}
+
+		if node.right == nil {
+			b.count--
+			return node.left
+		}
+
+		// node.left != nil  node.right != nil
+		// 左右子树都不会空
+
+		successOr := minimun(node.right)
+		successOr.left = node.left
+		successOr.right = b.removeMin(node.right)
+		b.count--
+		return successOr
+
+	}
+
 }
